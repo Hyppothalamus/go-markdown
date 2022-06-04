@@ -1,11 +1,12 @@
 import React from "react";
-import './index.css'
+import './main.css'
+import LineInput from './components/LineInput'
 
 function App() {
-    return React.createElement("div", null,
-        React.createElement("h1", {className: "text-3xl font-bold underline"},
-            "Hello World"
-        ), React.createElement("p", null, "It is I, Kasper")
+
+    return React.createElement('div', null,
+        React.createElement('h1', { className: 'text-lg underline bold' }, 'Go-markdown'),
+        React.createElement(LineInput, {}, null)
     )
 }
 
