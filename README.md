@@ -1,21 +1,24 @@
-# README
+# GO-MARKDOWN
 
-## About
+This is a simple application to make markdown notes using golang, react-typescript and wails.
+This is a new project because I wass bored :)
 
-This is Wails 2.0 + ReactJS Template
-Tested on Windows and MacOS
+## Installation
 
-To create a project using this template run:
-`wails init -n [Your Appname] -t https://github.com/AlienRecall/wails-react-template`
+not yet here you can clone the repo and use wails for yourself but there are no packages yet
 
-## Building 
+## Why?
 
-To build this project use `wails build`.
+Like I said I was bored and wanted a new project to work on. Something that I wanted to play around with and learn.
 
-## Live Development
+*So why golang, wails and react-typescript?*
 
-To run in live development mode, run `wails dev` in the project directory. The frontend dev server will run on http://localhost:34115. Wails will watch and re-build for every backend (golang) changes.
+I am learning golang and wails is a nice and easy to learn gui platform for golang. I am familiar witg react but wanted a step up from js that's why typescript.
 
-## Known Issues
+## What will it do?
 
-Sadly I still not found a way to correclty run frontend in development mode so the only solution is to rebuild at every frontend change (if you got a way open a pull request thanks)
+- Able to easely wright markdown documents 
+    - with easy keybinds
+    - themes
+    - custom and default styling
+- later on add cloud storage to seamingly sinc between devices? (if demand is high)
