@@ -6,12 +6,12 @@ const LineInput: FC = () => {
     const { handleInput } = useInputHandlerContext()
 
     // TODO: remove all styling from textarea
-     return React.createElement('textarea', {
-         className: "block w-full border border-solid border-gray-300",
-         onKeyUp: (e: KeyboardEvent) => {
-             handleInput(e)
-         }
-     }, null)
+    return React.createElement('textarea', {
+        className: "block w-full border border-solid border-gray-300",
+        onKeyUp: (e: any) => {
+            handleInput(e)
+        }
+    }, null)
 
 }
 
