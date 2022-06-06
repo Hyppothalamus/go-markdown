@@ -1,7 +1,7 @@
 import React from "react";
 import './main.css'
 import LineInput from './components/LineInput'
-import InputHandler, { InputHandlerClass } from "./context/InputHandler";
+import { InputProvider } from "./context/InputHandler";
 
 function InsertedApp() {
 
@@ -14,9 +14,11 @@ function InsertedApp() {
 
 function App() {
 
-    return React.createElement(InputHandler.Provider, {value: new InputHandlerClass()},
-        React.createElement(InsertedApp, {}, null)
-        )
+    return (
+        <InputProvider>
+            <InsertedApp />
+        </InputProvider>
+    )
 }
 
 export default App;
