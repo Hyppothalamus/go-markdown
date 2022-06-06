@@ -417,6 +417,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-full {
   width: 100%;
 }
+.resize {
+  resize: both;
+}
 .border {
   border-width: 1px;
 }

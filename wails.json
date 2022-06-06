@@ -5,7 +5,7 @@
     "frontend:install": "npm install",
     "frontend:dev": "",
     "frontend:dev:watcher": "",
-    "wailsjsdir": "./frontend",
+    "wailsjsdir": "./frontend/src",
     "version": "2",
     "Path": "",
     "BuildDir": "",

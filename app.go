@@ -29,9 +29,16 @@ func (a App) domReady(ctx context.Context) {
 // shutdown is called at application termination
 func (a *App) shutdown(ctx context.Context) {
 	// Perform your teardown here
+	// TODO save current progress in /tmp on programm crash
 }
 
-// Greet returns a greeting for the given name
-func (a *App) Greet(name string) string {
-	return fmt.Sprintf("Hello %s!", name)
+func (a *App) SaveFile(data []Line, name string) int {
+	// not implemented
+	fmt.Printf("data from fronted: %s\n", data)
+	return 0
+}
+
+type Line struct {
+	Type  string
+	Value string
 }

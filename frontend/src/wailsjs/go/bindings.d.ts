@@ -1,7 +1,7 @@
 export interface go {
   "main": {
     "App": {
-		Greet(arg1:string):Promise<string>
+		SaveFile(arg1:Array<Line>,arg2:string):Promise<number>
     },
   }
 

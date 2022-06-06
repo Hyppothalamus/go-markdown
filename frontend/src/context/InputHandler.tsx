@@ -12,7 +12,7 @@ export const InputProvider: FC<Props> = (props: Props) => {
         if (event.key === 'Enter') {
             // TODO detect line md tag (#, *, -, ...)
             const obj: Line = {
-                type: 'h1',
+                type: 'p',
                 value: event.target.value
             }
             event.target.value = '';
@@ -20,9 +20,15 @@ export const InputProvider: FC<Props> = (props: Props) => {
         }
     }, [setBlocks, blocks])
 
+    const saveCurrent = useCallback(() => {
+        // TODO format lines and give them to go to store them with dialog
+        console.log(JSON.stringify(blocks.slice(1)))
+        window.go.main.App.SaveFile(blocks.slice(1), "swakke.md")
+    }, [blocks])
+
     const api: any = useMemo(() => ({
-        handleInput, blocks, setBlocks
-    }), [handleInput, blocks, setBlocks])
+        handleInput, saveCurrent, blocks, setBlocks
+    }), [handleInput, saveCurrent, blocks, setBlocks])
 
    return (
        <InputContext.Provider value={api}>{props.children}</InputContext.Provider>
