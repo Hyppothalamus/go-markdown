@@ -11,11 +11,18 @@ export const InputProvider: FC<Props> = (props: Props) => {
     const handleInput = useCallback((event: any) => {
         if (event.key === 'Enter') {
             // TODO detect line md tag (#, *, -, ...)
+            const value: string = event.target.value;
             const obj: Line = {
                 type: '',
-                value: event.target.value.split('\n')[0]
+                value: value.split('\n')[0]
             }
-            if (event.target.value.startsWith('# ')) {
+            if (value.startsWith('#')) {
+                // TODO check for multiple hashtags (smaller headings)
+                // TODO remove tags from value but not now i am tired xD
+                const amount = value.split('#').length - 1
+                const trimValue = obj.value.split('# ', 0)[1]
+                console.log('amount: %s -- trim: %s\n', amount, trimValue)
+
                 obj.value = obj.value.split('# ')[1]
                 obj.type = "h1"
             } else obj.type = 'p'
