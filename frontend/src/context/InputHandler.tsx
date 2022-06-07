@@ -12,9 +12,12 @@ export const InputProvider: FC<Props> = (props: Props) => {
         if (event.key === 'Enter') {
             // TODO detect line md tag (#, *, -, ...)
             const obj: Line = {
-                type: 'p',
+                type: '',
                 value: event.target.value
             }
+            if (event.target.value.startsWith('# ')) {
+                obj.type = "h1"
+            } else obj.type = 'p'
             event.target.value = '';
             setBlocks([...blocks, obj])
         }
@@ -22,8 +25,8 @@ export const InputProvider: FC<Props> = (props: Props) => {
 
     const saveCurrent = useCallback(() => {
         // TODO format lines and give them to go to store them with dialog
-        console.log(JSON.stringify(blocks.slice(1)))
-        window.go.main.App.SaveFile(blocks.slice(1), "swakke.md")
+        const data = blocks.slice(1)
+        window.go.main.App.SaveFile(data, "swakke.md")
     }, [blocks])
 
     const api: any = useMemo(() => ({

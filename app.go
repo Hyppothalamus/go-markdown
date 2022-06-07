@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
 )
 
 // App struct
@@ -34,7 +35,22 @@ func (a *App) shutdown(ctx context.Context) {
 
 func (a *App) SaveFile(data []Line, name string) int {
 	// not implemented
-	fmt.Printf("data from fronted: %s\n", data)
+	// TODO remove trailing "\n"
+	var res string
+	for _, line := range data {
+		// TODO handle all types of html.
+		// tables will come later
+		if line.Type == "p" {
+			res = fmt.Sprintf("%s %s\n", res, line.Value)
+		} else if line.Type == "h1" {
+			res = fmt.Sprintf("%s # %s\n", res, line.Value)
+		}
+	}
+	err := os.WriteFile("/tmp/temp1.md", []byte(res), 0644)
+	if err != nil {
+		fmt.Printf("error while writing file: %s\n", err)
+	}
+	fmt.Println("writing succesfull")
 	return 0
 }
 
