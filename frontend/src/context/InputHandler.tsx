@@ -13,9 +13,10 @@ export const InputProvider: FC<Props> = (props: Props) => {
             // TODO detect line md tag (#, *, -, ...)
             const obj: Line = {
                 type: '',
-                value: event.target.value
+                value: event.target.value.split('\n')[0]
             }
             if (event.target.value.startsWith('# ')) {
+                obj.value = obj.value.split('# ')[1]
                 obj.type = "h1"
             } else obj.type = 'p'
             event.target.value = '';
@@ -26,7 +27,10 @@ export const InputProvider: FC<Props> = (props: Props) => {
     const saveCurrent = useCallback(() => {
         // TODO format lines and give them to go to store them with dialog
         const data = blocks.slice(1)
-        window.go.main.App.SaveFile(data, "swakke.md")
+        window.go.main.App.SaveFile(data, "swakke.md").then((data: number) => {
+            // TODO handle result from wails
+            console.log(data)
+        })
     }, [blocks])
 
     const api: any = useMemo(() => ({

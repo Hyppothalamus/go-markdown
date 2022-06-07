@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"os"
+
+	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 // App struct
@@ -34,7 +36,7 @@ func (a *App) shutdown(ctx context.Context) {
 }
 
 func (a *App) SaveFile(data []Line, name string) int {
-	// not implemented
+    // open saveFile dialog
 	// TODO remove trailing "\n"
 	var res string
 	for _, line := range data {
@@ -46,9 +48,19 @@ func (a *App) SaveFile(data []Line, name string) int {
 			res = fmt.Sprintf("%s # %s\n", res, line.Value)
 		}
 	}
-	err := os.WriteFile("/tmp/temp1.md", []byte(res), 0644)
+    fileName, err := runtime.SaveFileDialog(a.ctx, runtime.SaveDialogOptions{
+        Title: "Save File",
+        CanCreateDirectories: true,
+    })
+    if err != nil {
+        fmt.Printf("error saving file?: %s\n", err)
+        return 1
+    }
+    fmt.Printf("file from dialog: %s\n", fileName)
+	err = os.WriteFile(fileName, []byte(res), 0644)
 	if err != nil {
 		fmt.Printf("error while writing file: %s\n", err)
+        return 1
 	}
 	fmt.Println("writing succesfull")
 	return 0
