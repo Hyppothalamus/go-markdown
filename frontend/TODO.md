@@ -2,7 +2,13 @@
 
 ## TODO's
 
-* styling
-* add blocks
-* dynamically style the blocks
-    * instead of after enter press
+* [] styling
+* [] add cursor
+    * [] flashing / blinking
+    * [] movabe with arrow (later => vimlike)
+    * [] move between text and edit
+* [] enable mouse movement
+* [] add tobbar with settings and menus
+* [x] add blocks
+* [] dynamically style the blocks
+    * [x] instead of after enter press
