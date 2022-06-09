@@ -1,4 +1,4 @@
-import React, { createContext, useMemo, FC, useCallback, useContext, useState, ReactNode } from 'react'
+import { createContext, useMemo, FC, useCallback, useContext, useState, ReactNode } from 'react'
 import { Line } from '../models/line'
 
 type Props = {
@@ -20,8 +20,10 @@ export const InputProvider: FC<Props> = (props: Props) => {
                 // TODO check for multiple hashtags (smaller headings)
                 // TODO remove tags from value but not now i am tired xD
                 const amount = value.split('#').length - 1
-                const trimValue = obj.value.split('# ', 0)[1]
-                console.log('amount: %s -- trim: %s\n', amount, trimValue)
+                const realV = value.split('#'.repeat(amount))
+                console.log('amount: %s -- splits: %s', amount, realV.join(' - '))
+
+                if (realV[1].includes('#')) {}
 
                 obj.value = obj.value.split('# ')[1]
                 obj.type = "h1"
