@@ -6,12 +6,11 @@ const go = {
     "App": {
       /**
        * SaveFile
-       * @param {Array<Line>} arg1 - Go Type: []main.Line
-       * @param {string} arg2 - Go Type: string
+       * @param {string} arg1 - Go Type: string
        * @returns {Promise<number>}  - Go Type: int
        */
-      "SaveFile": (arg1, arg2) => {
-        return window.go.main.App.SaveFile(arg1, arg2);
+      "SaveFile": (arg1) => {
+        return window.go.main.App.SaveFile(arg1);
       },
     },
   },

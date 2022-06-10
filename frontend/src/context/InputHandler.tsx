@@ -22,18 +22,17 @@ export const InputProvider: FC<Props> = (props: Props) => {
         }
     }, [setMarkdown, markdown])
 
-    // const saveCurrent = useCallback(() => {
-    //     // TODO format lines and give them to go to store them with dialog
-    //     const data = blocks.slice(1)
-    //     window.go.main.App.SaveFile(data, "swakke.md").then((data: number) => {
-    //         // TODO handle result from wails
-    //         console.log(data)
-    //     })
-    // }, [blocks])
+    const saveCurrent = useCallback(() => {
+        // TODO format lines and give them to go to store them with dialog
+        window.go.main.App.SaveFile(markdown).then((data: number) => {
+            // TODO handle result from wails
+            console.log(data)
+        })
+    }, [markdown])
 
     const api: any = useMemo(() => ({
-        handleInput, markdown, setMarkdown
-    }), [handleInput, markdown, setMarkdown])
+        handleInput, markdown, setMarkdown, saveCurrent
+    }), [handleInput, markdown, setMarkdown, saveCurrent])
 
    return (
        <InputContext.Provider value={api}>{props.children}</InputContext.Provider>

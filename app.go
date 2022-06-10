@@ -35,19 +35,8 @@ func (a *App) shutdown(ctx context.Context) {
 	// TODO save current progress in /tmp on programm crash
 }
 
-func (a *App) SaveFile(data []Line, name string) int {
-    // open saveFile dialog
-	// TODO remove trailing "\n"
-	var res string
-	for _, line := range data {
-		// TODO handle all types of html.
-		// tables will come later
-		if line.Type == "p" {
-			res = fmt.Sprintf("%s %s\n", res, line.Value)
-		} else if line.Type == "h1" {
-			res = fmt.Sprintf("%s # %s\n", res, line.Value)
-		}
-	}
+func (a *App) SaveFile(data string) int {
+    // open file dialog
     fileName, err := runtime.SaveFileDialog(a.ctx, runtime.SaveDialogOptions{
         Title: "Save File",
         CanCreateDirectories: true,
@@ -57,7 +46,7 @@ func (a *App) SaveFile(data []Line, name string) int {
         return 1
     }
     fmt.Printf("file from dialog: %s\n", fileName)
-	err = os.WriteFile(fileName, []byte(res), 0644)
+    err = os.WriteFile(fileName, []byte(data), 0644)
 	if err != nil {
 		fmt.Printf("error while writing file: %s\n", err)
         return 1

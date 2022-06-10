@@ -6,11 +6,14 @@ import MarkdownView from "react-showdown";
 
 function InsertedApp() {
 
-    const { markdown } = useInputHandlerContext();
+    const { markdown, saveCurrent } = useInputHandlerContext();
 
     return React.createElement('div', null,
         React.createElement('h1', { className: 'text-lg underline bold' }, 'Go-markdown'),
         React.createElement(LineInput, {}, null),
+        React.createElement('button', { className: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded', onClick:() => {
+            saveCurrent()
+        }, }, 'Save'),
         React.createElement(MarkdownView, {markdown: markdown, options: {tables: true, emoji: true}, flavor: 'github'}, null)
     )
 
