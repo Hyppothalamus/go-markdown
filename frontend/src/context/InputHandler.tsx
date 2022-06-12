@@ -23,16 +23,25 @@ export const InputProvider: FC<Props> = (props: Props) => {
     }, [setMarkdown, markdown])
 
     const saveCurrent = useCallback(() => {
-        // TODO format lines and give them to go to store them with dialog
         window.go.main.App.SaveFile(markdown).then((data: number) => {
             // TODO handle result from wails
+            // For example kind of poput with error message or succes
             console.log(data)
         })
     }, [markdown])
 
+    const openFile = useCallback(() => {
+        window.go.main.App.OpenFile().then((data: string) => {
+            console.log(data)
+            // TODO md doesnt work? need to fix
+            // probably by reading line by line and adding incremental
+            setMarkdown(data)
+        })
+    }, [setMarkdown])
+
     const api: any = useMemo(() => ({
-        handleInput, markdown, setMarkdown, saveCurrent
-    }), [handleInput, markdown, setMarkdown, saveCurrent])
+        handleInput, markdown, setMarkdown, saveCurrent, openFile
+    }), [handleInput, markdown, setMarkdown, saveCurrent, openFile])
 
    return (
        <InputContext.Provider value={api}>{props.children}</InputContext.Provider>

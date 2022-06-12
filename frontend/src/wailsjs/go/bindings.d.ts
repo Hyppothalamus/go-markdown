@@ -1,6 +1,7 @@
 export interface go {
   "main": {
     "App": {
+		OpenFile():Promise<string>
 		SaveFile(arg1:string):Promise<number>
     },
   }

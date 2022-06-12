@@ -5,6 +5,13 @@ const go = {
   "main": {
     "App": {
       /**
+       * OpenFile
+       * @returns {Promise<string>}  - Go Type: string
+       */
+      "OpenFile": () => {
+        return window.go.main.App.OpenFile();
+      },
+      /**
        * SaveFile
        * @param {string} arg1 - Go Type: string
        * @returns {Promise<number>}  - Go Type: int

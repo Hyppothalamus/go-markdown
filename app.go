@@ -35,6 +35,7 @@ func (a *App) shutdown(ctx context.Context) {
 	// TODO save current progress in /tmp on programm crash
 }
 
+// TODO add string return with succes message
 func (a *App) SaveFile(data string) int {
     // open file dialog
     fileName, err := runtime.SaveFileDialog(a.ctx, runtime.SaveDialogOptions{
@@ -55,7 +56,19 @@ func (a *App) SaveFile(data string) int {
 	return 0
 }
 
-type Line struct {
-	Type  string
-	Value string
+func (a *App) OpenFile() string {
+    file, err := runtime.OpenFileDialog(a.ctx, runtime.OpenDialogOptions{
+        Title: "Open your Markdown file",
+        ShowHiddenFiles: true,
+    })
+    if err != nil {
+        fmt.Printf("error selecting file: %s\n", err)
+    }
+    fmt.Printf("file from dialog: %s\n", file)
+    data, fileErr := os.ReadFile(file)
+    if fileErr != nil {
+        fmt.Printf("error reading file: %s\n", fileErr)
+    }
+    fmt.Printf("data from file: %s\n", data)
+    return string(data)
 }
