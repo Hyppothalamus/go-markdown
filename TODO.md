@@ -2,7 +2,9 @@
 
 ## TODO's
 
-* reading and saving files
+* [] reading and saving files
+    * [] reading
+    * [x] writing
 * config file
     * custom themes
         * css?
