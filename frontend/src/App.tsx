@@ -3,12 +3,14 @@ import './main.css'
 import LineInput from './components/LineInput'
 import { InputProvider, useInputHandlerContext } from "./context/InputHandler";
 import MarkdownView from "react-showdown";
+import MenuBar from "./components/MenuBar";
 
 function InsertedApp() {
 
     const { markdown, saveCurrent, openFile } = useInputHandlerContext();
 
     return React.createElement('div', null,
+        React.createElement(MenuBar, {}, null),
         React.createElement('h1', { className: 'text-lg underline bold' }, 'Go-markdown'),
         React.createElement(LineInput, {}, null),
         React.createElement('button', { className: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded', onClick:() => {

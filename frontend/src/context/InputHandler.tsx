@@ -32,12 +32,16 @@ export const InputProvider: FC<Props> = (props: Props) => {
 
     const openFile = useCallback(() => {
         window.go.main.App.OpenFile().then((data: string) => {
-            console.log(data)
             // TODO md doesnt work? need to fix
             // probably by reading line by line and adding incremental
-            setMarkdown(data)
+            // line split up first add tag after add data?
+            // this shit doesn't make any sense what the fuck kill me
+            for (let s of data) {
+                setMarkdown(markdown + s)
+            } 
+            console.log(markdown)
         })
-    }, [setMarkdown])
+    }, [setMarkdown, markdown])
 
     const api: any = useMemo(() => ({
         handleInput, markdown, setMarkdown, saveCurrent, openFile
