@@ -414,11 +414,29 @@ Ensure the default browser behavior of the `hidden` attribute.
 .block {
   display: block;
 }
+.flex {
+  display: flex;
+}
+.grid {
+  display: grid;
+}
 .w-full {
   width: 100%;
 }
+.w-screen {
+  width: 100vw;
+}
 .resize {
   resize: both;
+}
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid-rows-1 {
+  grid-template-rows: repeat(1, minmax(0, 1fr));
+}
+.gap-4 {
+  gap: 1rem;
 }
 .rounded {
   border-radius: 0.25rem;
